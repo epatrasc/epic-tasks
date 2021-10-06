@@ -1,0 +1,31 @@
+{
+  "name": "epic-tasks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epatrasc/epic-tasks.git"
+  },
+  "keywords": [],
+  "author": "Emilian Patrasc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/epatrasc/epic-tasks/issues"
+  },
+  "homepage": "https://github.com/epatrasc/epic-tasks#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "got": "^11.8.2",
+    "mongodb": "^4.1.3"
+  }
+}
