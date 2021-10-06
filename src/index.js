@@ -22,20 +22,27 @@ const client = MongoSingleton.getClient(mongoUri);
   const disciplinesPromises = disciplinesIds.map((discipline) => got.get(`https://backend-staging.epicuramed.it/disciplines/${discipline}`).json());
   const results = await Promise.allSettled(disciplinesPromises);
   const disciplines = results.filter((result) => result.status === 'fulfilled').map((result) => result.value);
-  console.log(disciplines);
+
+  // PRINT lists
+  console.log('# PRINT operationTypes');
+  console.log(JSON.stringify(operationTypes, null, 2));
+  console.log('# PRINT disciplines');
+  console.log(JSON.stringify(disciplines, null, 2));
 
   // Task 5: save on db
   try {
     await client.connect();
     const database = await client.db('epic-db');
-    await database.collection('discipline').remove({});
-    await database.collection('operationType').remove({});
+    await database.collection('discipline').deleteMany({});
+    await database.collection('operationType').deleteMany({});
 
     const operationResult = [
       await database.collection('discipline').insertMany(disciplines),
       await database.collection('operationType').insertMany(operationTypes),
     ];
-    console.log(operationResult);
+
+    console.log('# PRINT operationResult');
+    console.log(JSON.stringify(operationResult, null, 2));
   } catch (error) {
     console.log(error);
   }
